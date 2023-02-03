@@ -1,12 +1,20 @@
-print("\n")
-print("Imagine que você passou um longo dia no trabalho.\n")
-print("Chegando em casa, após todas as suas obrigações você se vê cansado o bastante e decide descansar.\n")
-print("Sua cabeça gira frenéticamente ao longo de um grande pesadelo.\n")
-print("Você acorda então...\n")
+import time # Primeira modificação introdução  
+import random
+
+intro = ["\n",
+"Imagine que você passou um longo dia no trabalho.\n",
+"Chegando em casa, após todas as suas obrigações você se vê cansado o bastante e decide descansar.\n",
+"Sua cabeça gira frenéticamente ao longo de um grande pesadelo.\n",
+"Você acorda então...\n"]
+
+for intro in intro:
+   print(intro)
+   time.sleep(2)
+
 print(41*"*")
 print(3*"*","No labirinto da sua mente cansada",3*"*")
 print(41*"*")
-print("\n")
+print("\n") ### fim introdução
 
 guerreiro = input("Qual o seu nome ? ")
 print("\n")
@@ -15,41 +23,47 @@ guerreiro = guerreiro.capitalize()
 
 guerreiro_vida_total = int(50)
 
-print("Você se vê olhando para uma caverna.\n")
-print("Algo que não faz sentido para você, inconscientemente te diz para entrar.\n")
+intro_caverna=["Você se vê olhando para uma caverna.\n",
+"Algo que não faz sentido para você, inconscientemente te diz para entrar.\n",
+"{} então pensa e decide o que fazer\n".format(guerreiro),
+"O que você faz?\n"]
 
-print(41*"-")
-print("\n")
+for caverna in intro_caverna:
+   print(caverna)
+   time.sleep(2)
 
-print(f"{guerreiro}"" então pensa e decide o que fazer\n")
-print(2*"-\n")
-print("O que você faz?\n")
-print("\n")
 
-while True:#laço para que as entradas sejam validadas
+#função escolha 1 caverna
+def escolha_1():
+  while True:#laço para que as entradas sejam validadas
     print( " Entra na caverna? Digite - 1\n" , "Dá meia volta e simplesmente vai embora. Digite - 2 ")
     print("\n")
-
 
     escolha = input("1 ou 2 ? " )
 
     if escolha.isdigit():
         escolha = int(escolha)
         if escolha == 1:
-            print("Você decide entrar na caverna, tudo é mais escuro do que você pensava. \n")
-            print("Você não enxerga um palmo em frente ao nariz, pensa em voltar, mas algo te convida para seguir. . .")
-            print("\n")                       
+            escolha_caverna_1=["",
+            "Você decide entrar na caverna, tudo é mais escuro do que você pensava. \n",
+            "Você não enxerga um palmo em frente ao nariz, pensa em voltar, mas algo te convida para seguir. . .",]
+            for opcao in escolha_caverna_1:
+              print(opcao, sep = " ", flush = True)
+              time.sleep(2)                      
             break
 
         elif escolha == 2:
-            print("Você dá meia volta e vai embora. \n")
-            print("Mas sua intuição diz gentilemente ' O cara programou tudo isso pra você apertar o 2 e ir embora ? ' ")
-            print("\n")
-            print(". . .")
-            print("\n") 
-            print("Você reflete, suspira pausadamente e decide entrar na caverna")
-            break
-        
+            escolha_caverna_2=["",
+            "Você dá meia volta e vai embora. \n",
+            "Mas sua intuição diz gentilemente ' O cara programou tudo isso pra você apertar o 2 e ir embora ? ' ",
+            "\n",
+            "...",
+            "\n", 
+            "Você reflete, suspira pausadamente e decide entrar na caverna. "]
+            for escolha in escolha_caverna_2:
+              print(escolha, sep = " ", flush = True)
+              time.sleep(0.3)         
+            break        
         else:
             print("Opção inválida. Por favor, escolha apenas opções listadas.")
             print("\n") 
@@ -57,11 +71,7 @@ while True:#laço para que as entradas sejam validadas
         print("Por favor digite apenas números.")
         print("\n") 
 
-print(18*"*")
-print("\n")
-print("*** ' 'Krak' ' ***")
-print("\n")
-print(18*"*")
+escolha_1()
 
 print("Você escuta alguns ruídos vindos do que considera o fundo da caverna. \n")
 #começa o enredo dentro da caverna
@@ -70,9 +80,10 @@ print(41*"*")
 print(3*"*"," Capítulo 1 " "Luz no fim do túnel. ",3*"*")
 print(41*"*")
 print("\n")
+
 print("Você fica com um certo receio após ouvir o barulho.\n""Mas se lembra que tem um isqueiro no bolso.\n")
 
-#definindofunções para a escolha 2
+#definindo funções para a escolha 2
 dano_do_buraco = 6
 guerreiro_vida_total_queda = guerreiro_vida_total - dano_do_buraco
 
@@ -159,7 +170,7 @@ def batalha(inimigo,guerreiro_vida_total):
         hit =1
         guerreiro_vida_total -=hit      
         print(f"Na sua tentativa frustrada de fuga o inimigo te acerta com {hit} de dano!\n")
-        print(guerreiro_vida_total)
+        print(f"Agora você tem {guerreiro_vida_total} de vida.")
         if guerreiro_vida_total == 0:
           print("Sua aventura termina aqui!\n""Você acorda em sua cama pensando...\n")
           print("Eu preciso chamar esse rapaz para uma entrevista! ") 
@@ -171,7 +182,7 @@ def batalha(inimigo,guerreiro_vida_total):
 ########            
             
 #while true:
- #  print("Você precisa lutar para sair.\n""Mas com sua afobação, {} precisa pensar no que fazer)
+  # print("Você precisa lutar para sair.\n""Mas com sua afobação, {} precisa pensar no que fazer)
         
 
 
